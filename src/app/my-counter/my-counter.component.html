@@ -1,0 +1,8 @@
+<div class="d-flex justify-content-center my-3">
+  <button class="btn btn-primary mx-2" (click)="increment()">Increment</button>
+  <div class="h4 my-auto">{{ count$ | async }}</div>
+  <button class="btn btn-danger mx-2" (click)="decrement()">Decrement</button>
+</div>
+<div class="text-center">
+  <button class="btn btn-secondary" (click)="reset()">Reset Counter</button>
+</div>
