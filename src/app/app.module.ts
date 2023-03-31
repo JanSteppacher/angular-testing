@@ -9,21 +9,26 @@ import { StoreModule } from '@ngrx/store';
 import { FormComponent} from "./form/form.component";
 import { counterReducer } from './store/counter.reducer';
 import {ReactiveFormsModule} from "@angular/forms";
+import { HomeComponent } from './home/home.component';
+import {AuthGuard} from "./auth.guard";
 
 @NgModule({
   declarations: [
     AppComponent,
     GenericTableComponent,
     MyCounterComponent,
-    FormComponent
+    FormComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     RouterOutlet,
     RouterModule.forRoot([
-      {path: 'table', component: GenericTableComponent},
-      {path: 'counter', component: MyCounterComponent},
-      {path: 'form', component: FormComponent},
+      {path: 'table', component: GenericTableComponent, canActivate: [AuthGuard]},
+      {path: 'counter', component: MyCounterComponent, canActivate: [AuthGuard]},
+      {path: 'form', component: FormComponent, canActivate: [AuthGuard]},
+      {path: 'home', component: HomeComponent},
+      {path: '', redirectTo: '/home', pathMatch: 'full' }
 
     ]),
     StoreModule.forRoot({count: counterReducer}),
