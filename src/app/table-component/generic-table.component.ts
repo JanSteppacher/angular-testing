@@ -13,6 +13,8 @@ export class GenericTableComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.data = this.dataService.getData()
+    this.dataService.getData().subscribe(data => {
+      this.data = data
+    })
   }
 }

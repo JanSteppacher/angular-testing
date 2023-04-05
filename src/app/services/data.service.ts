@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class DataService {
     {country: 'United States of America', leader: 'Joe Biden'}
   ]
 
-  getData() {
-    return this.data
+  getData(): Observable<any[]> {
+    return of(this.data)
   }
 }
