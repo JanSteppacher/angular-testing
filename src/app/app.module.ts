@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { GenericTableComponent } from './table-component/generic-table.component';
-import {RouterModule, RouterOutlet} from "@angular/router";
+import {RouterModule} from "@angular/router";
 import { MyCounterComponent } from './my-counter/my-counter.component';
 import { StoreModule } from '@ngrx/store';
 import { FormComponent} from "./form/form.component";
@@ -22,7 +22,7 @@ import {AuthGuard} from "./auth.guard";
   ],
   imports: [
     BrowserModule,
-    RouterOutlet,
+    RouterModule,
     RouterModule.forRoot([
       {path: 'table', component: GenericTableComponent, canActivate: [AuthGuard]},
       {path: 'counter', component: MyCounterComponent, canActivate: [AuthGuard]},

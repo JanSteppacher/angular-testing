@@ -1,23 +1,31 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormComponent } from './form.component';
+import {createComponentFactory, Spectator} from "@ngneat/spectator";
+import {ReactiveFormsModule} from "@angular/forms";
+import {FormComponent} from "./form.component";
 
 describe('FormComponent', () => {
-  let component: FormComponent;
-  let fixture: ComponentFixture<FormComponent>;
+  let spectator: Spectator<FormComponent>
+  let component: FormComponent
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ FormComponent ]
-    })
-    .compileComponents();
+  const createComponent = createComponentFactory({
+    component: FormComponent,
+    imports: [ReactiveFormsModule]
+  })
 
-    fixture = TestBed.createComponent(FormComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => {
+    spectator = createComponent()
+    component = spectator.component
+  })
 
-  it('should create', () => {
+  it('creates the component', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('onSubmit', () => {
+    it('sets submitted to true', () => {
+      component.onSubmit()
+
+      expect(component.submitted).toBeTruthy()
+    })
+  })
 });
