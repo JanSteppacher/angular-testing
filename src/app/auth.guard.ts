@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     if (localStorage.getItem('key') === 'testing-workshop') {
       return true;
     } else {
-      window.alert('Du brauchst einen Zugangsschlüssel um diese Seite betreten zu können!');
+      window.alert('You need a Access Key to Enter this page!');
       return false;
     }
   }

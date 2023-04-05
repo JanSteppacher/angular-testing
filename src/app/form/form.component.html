@@ -1,56 +1,52 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="geschlecht">Geschlecht:</label>
-    <select formControlName="geschlecht" class="form-control" id="geschlecht">
-      <option value="">Bitte auswählen</option>
-      <option value="männlich">Männlich</option>
-      <option value="weiblich">Weiblich</option>
-      <option value="divers">Divers</option>
+    <label for="gender">Gender:</label>
+    <select formControlName="gender" class="form-control" id="gender">
+      <option value="">Please select</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="diverse">Diverse</option>
     </select>
-    <div *ngIf="form.controls['geschlecht'].invalid && (form.controls['geschlecht'].dirty || form.controls['geschlecht'].touched)"
+    <div *ngIf="form.controls['gender'].invalid && (form.controls['gender'].dirty || form.controls['gender'].touched)"
          class="alert alert-danger">
-      <div *ngIf="form.controls['geschlecht'].errors?.required">
-        Bitte wählen Sie eine Option aus.
+      <div *ngIf="form.controls['gender'].errors?.required">
+        Please select an option.
       </div>
     </div>
   </div>
-
   <div class="form-group">
     <label for="name">Name:</label>
     <input formControlName="name" type="text" class="form-control" id="name">
     <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
          class="alert alert-danger">
       <div *ngIf="form.controls['name'].errors?.required">
-        Bitte geben Sie einen Namen ein.
+        Please enter a name.
       </div>
     </div>
   </div>
-
   <div class="form-group">
-    <label for="adresse">Adresse:</label>
-    <input formControlName="adresse" type="text" class="form-control" id="adresse">
-    <div *ngIf="form.controls['adresse'].invalid && (form.controls['adresse'].dirty || form.controls['adresse'].touched)"
+    <label for="address">Address:</label>
+    <input formControlName="address" type="text" class="form-control" id="address">
+    <div *ngIf="form.controls['address'].invalid && (form.controls['address'].dirty || form.controls['address'].touched)"
          class="alert alert-danger">
-      <div *ngIf="form.controls['adresse'].errors?.required">
-        Bitte geben Sie eine Adresse ein.
+      <div *ngIf="form.controls['address'].errors?.required">
+        Please enter an address.
       </div>
     </div>
   </div>
-
   <div class="form-group">
-    <label for="geburtsdatum">Geburtsdatum:</label>
-    <input formControlName="geburtsdatum" type="date" class="form-control" id="geburtsdatum">
-    <div *ngIf="form.controls['geburtsdatum'].invalid && (form.controls['geburtsdatum'].dirty || form.controls['geburtsdatum'].touched)"
+    <label for="birthdate">Birthdate:</label>
+    <input formControlName="birthdate" type="date" class="form-control" id="birthdate">
+    <div *ngIf="form.controls['birthdate'].invalid && (form.controls['birthdate'].dirty || form.controls['birthdate'].touched)"
          class="alert alert-danger">
-      <div *ngIf="form.controls['geburtsdatum'].errors?.required">
-        Bitte wählen Sie ein Datum aus.
+      <div *ngIf="form.controls['birthdate'].errors?.required">
+        Please select a date.
       </div>
     </div>
   </div>
+  <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Submit</button>
 
-  <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Abschicken</button>
 </form>
-
 <div *ngIf="submitted">
-  <h2 style="color: green">Formular erfolgreich abgegeben.</h2>
+  <h2 style="color: green">Form submitted successfully.</h2>
 </div>

@@ -12,10 +12,10 @@ export class FormComponent {
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      geschlecht: ['', Validators.required],
+      gender: ['', Validators.required],
       name: ['', Validators.required],
-      adresse: ['', Validators.required],
-      geburtsdatum: ['', Validators.required],
+      address: ['', Validators.required],
+      birthdate: ['', Validators.required],
     });
   }
 

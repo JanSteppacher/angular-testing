@@ -9,11 +9,11 @@ export class HomeComponent {
 
   getAccessKey() {
     localStorage.setItem('key', 'testing-workshop')
-    window.alert('Zugangsschlüssel erfolgreich erhalten');
+    window.alert('Getting Access Key was successful');
   }
 
   removeAccessKey() {
     localStorage.removeItem('key')
-    window.alert('Zugangsschlüssel erfolgreich entfernt');
+    window.alert('Removing Access Key was successful');
   }
 }
