@@ -1,23 +1,38 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { GenericTableComponent } from './generic-table.component';
+import {createComponentFactory, Spectator, SpyObject} from "@ngneat/spectator/jest";
+import {GenericTableComponent} from "./generic-table.component";
+import {DataService} from "../services/data.service";
+import {of} from "rxjs";
 
 describe('GenericTableComponent', () => {
-  let component: GenericTableComponent;
-  let fixture: ComponentFixture<GenericTableComponent>;
+  let spectator: Spectator<GenericTableComponent>
+  let component: GenericTableComponent
+  let mockDataService: SpyObject<DataService>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ GenericTableComponent ]
-    })
-    .compileComponents();
+  const createComponent = createComponentFactory({
+    component: GenericTableComponent,
+    mocks: [DataService],
+    detectChanges: false
+  })
 
-    fixture = TestBed.createComponent(GenericTableComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => {
+    spectator = createComponent()
+    component = spectator.component
 
-  it('should create', () => {
+    mockDataService = spectator.inject(DataService)
+  })
+
+  it('creates the component', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('ngOnInit', () => {
+    it('gets the data from data service', () => {
+      const testData = [{country: 'TestCountry', leader: 'TestLeader'}]
+      mockDataService.getData.mockReturnValue(of(testData))
+
+      component.ngOnInit()
+
+      expect(component.data).toEqual(testData)
+    })
+  })
 });

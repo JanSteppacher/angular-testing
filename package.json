@@ -44,6 +44,15 @@
       "<rootDir>/node_modules/",
       "<rootDir>/dist/"
     ],
+    "roots": [
+      "src"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": ["src/**/*.ts"],
+    "coveragePathIgnorePatterns": [
+      ".*.module.ts",
+      ".*.main.ts"
+    ],
     "globals": {
       "ts-jest": {
         "tsConfig": "<rootDir>/tsconfig.spec.json",

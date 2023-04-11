@@ -1,16 +1,32 @@
-import { TestBed } from '@angular/core/testing';
-
 import { AuthGuard } from './auth.guard';
+import {createServiceFactory} from "@ngneat/spectator";
+import {SpectatorService} from "@ngneat/spectator";
+import {ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
 
 describe('AuthGuard', () => {
   let guard: AuthGuard;
+  let spectator: SpectatorService<AuthGuard>
+
+  let activatedRouteSnapshot = new ActivatedRouteSnapshot()
+  let routerStateSnapshot: RouterStateSnapshot
+
+  const createGuard = createServiceFactory({
+    service: AuthGuard
+  })
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    guard = TestBed.inject(AuthGuard);
+    spectator = createGuard()
+    guard = spectator.service
   });
 
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
+  describe('canActivate', () => {
+    it('returns false', () => {
+      expect(guard.canActivate(activatedRouteSnapshot, routerStateSnapshot)).toBeFalsy()
+    })
+    it('returns true', () => {
+      localStorage.setItem('key', 'testing-workshop')
+
+      expect(guard.canActivate(activatedRouteSnapshot, routerStateSnapshot)).toBeTruthy()
+    })
+  })
 });

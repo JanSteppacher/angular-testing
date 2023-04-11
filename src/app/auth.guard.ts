@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
     return this.checkLoggedIn();
   }
 
-  checkLoggedIn(): boolean {
+  private checkLoggedIn(): boolean {
     if (localStorage.getItem('key') === 'testing-workshop') {
       return true;
     } else {
