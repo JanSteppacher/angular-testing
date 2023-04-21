@@ -1,14 +1,14 @@
 <table class="table">
   <thead>
   <tr>
-    <th>Country</th>
-    <th>President</th>
+    <th>Title</th>
+    <th>Completed</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let value of data">
-    <td>{{value.country}}</td>
-    <td>{{value.leader}}</td>
+  <tr *ngFor="let todo of todos">
+    <td>{{todo.title}}</td>
+    <td [ngStyle]="{'color': todo.completed ? 'green' : 'red'}">{{todo.completed}}</td>
   </tr>
   </tbody>
 </table>
