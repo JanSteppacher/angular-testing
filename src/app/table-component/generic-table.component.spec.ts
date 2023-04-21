@@ -27,12 +27,16 @@ describe('GenericTableComponent', () => {
 
   describe('ngOnInit', () => {
     it('gets the data from data service', () => {
-      const testData = [{country: 'TestCountry', leader: 'TestLeader'}]
-      mockDataService.getData.mockReturnValue(of(testData))
+      const mockResponse = [
+        { id: 1, title: 'mock todo 1', completed: false },
+        { id: 2, title: 'mock todo 2', completed: true },
+        { id: 3, title: 'mock todo 3', completed: false },
+      ];
+      mockDataService.getTodos.mockReturnValue(of(mockResponse))
 
       component.ngOnInit()
 
-      expect(component.data).toEqual(testData)
+      expect(component.todos).toEqual(mockResponse)
     })
   })
 });

@@ -17,4 +17,12 @@ describe('FormComponent', () => {
   it('creates the component', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('onSubmit', () => {
+    it('sets submitted to true', () => {
+      component.onSubmit()
+
+      expect(component.submitted).toBeTruthy()
+    })
+  })
 });
