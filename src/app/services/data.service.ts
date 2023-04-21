@@ -1,21 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  data = [
-    {country: 'Germany', leader: 'Olaf Scholz'},
-    {country: 'France', leader: 'Emmanuel Macron'},
-    {country: 'Romania', leader: 'Nicolae Ciucă'},
-    {country: 'Sweden', leader: 'Ulf Kristersson'},
-    {country: 'China', leader: 'Xi Jinping'},
-    {country: 'United States of America', leader: 'Joe Biden'}
-  ]
+  constructor(private http : HttpClient){}
 
-  getData(): Observable<any[]> {
-    return of(this.data)
+  getTodos(): Observable<any> {
+    return this.http.get('https://jsonplaceholder.typicode.com/users/1/todos')
   }
 }

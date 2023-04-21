@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from "../services/data.service";
+import {Todo} from "../entities/todo.interface";
 
 @Component({
   selector: 'app-generic-table',
@@ -8,13 +9,13 @@ import {DataService} from "../services/data.service";
 })
 export class GenericTableComponent implements OnInit {
 
-  data: any
+  todos: Todo[] | undefined
 
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.getData().subscribe(data => {
-      this.data = data
+    this.dataService.getTodos().subscribe(data => {
+      this.todos = data
     })
   }
 }

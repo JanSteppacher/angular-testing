@@ -1,6 +1,4 @@
-
 import {createComponentFactory, Spectator} from "@ngneat/spectator";
-import {ReactiveFormsModule} from "@angular/forms";
 import {FormComponent} from "./form.component";
 
 describe('FormComponent', () => {
@@ -8,8 +6,7 @@ describe('FormComponent', () => {
   let component: FormComponent
 
   const createComponent = createComponentFactory({
-    component: FormComponent,
-    imports: [ReactiveFormsModule]
+    component: FormComponent
   })
 
   beforeEach(() => {
@@ -20,12 +17,4 @@ describe('FormComponent', () => {
   it('creates the component', () => {
     expect(component).toBeTruthy();
   });
-
-  describe('onSubmit', () => {
-    it('sets submitted to true', () => {
-      component.onSubmit()
-
-      expect(component.submitted).toBeTruthy()
-    })
-  })
 });

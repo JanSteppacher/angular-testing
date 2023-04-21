@@ -11,6 +11,7 @@ import { counterReducer } from './store/counter.reducer';
 import {ReactiveFormsModule} from "@angular/forms";
 import { HomeComponent } from './home/home.component';
 import {AuthGuard} from "./auth.guard";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -21,8 +22,8 @@ import {AuthGuard} from "./auth.guard";
     HomeComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
-    RouterModule,
     RouterModule.forRoot([
       {path: 'table', component: GenericTableComponent, canActivate: [AuthGuard]},
       {path: 'counter', component: MyCounterComponent, canActivate: [AuthGuard]},
