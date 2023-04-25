@@ -1,5 +1,4 @@
 import { AppComponent } from './app.component';
-import {RouterTestingModule} from "@angular/router/testing";
 import {createComponentFactory, Spectator} from "@ngneat/spectator";
 
 describe('AppComponent', () => {
@@ -7,8 +6,7 @@ describe('AppComponent', () => {
   let component: AppComponent
 
   const createComponent = createComponentFactory({
-    component: AppComponent,
-    imports: [RouterTestingModule]
+    component: AppComponent
   })
 
   beforeEach(() => {
@@ -18,9 +16,5 @@ describe('AppComponent', () => {
 
   it('creates the component', () => {
     expect(component).toBeTruthy();
-  });
-
-  it(`has as title 'testing-workshop'`, () => {
-    expect(component.title).toEqual('testing-workshop');
   });
 });
