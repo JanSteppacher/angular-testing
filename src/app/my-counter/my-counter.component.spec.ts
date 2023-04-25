@@ -33,7 +33,7 @@ describe('MyCounterComponent', () => {
     spectator.detectChanges();
   });
 
-  it('should dispatch an Increment action when the increment button is clicked', () => {
+  it('dispatches an Increment action when the increment button is clicked', () => {
     const incrementAction = new Increment();
 
     component.increment()
@@ -41,7 +41,7 @@ describe('MyCounterComponent', () => {
     expect(store.dispatch).toHaveBeenCalledWith(incrementAction);
   });
 
-  it('should dispatch a Decrement action when the decrement button is clicked', () => {
+  it('dispatches a Decrement action when the decrement button is clicked', () => {
     const decrementAction = new Decrement();
 
     component.decrement()
@@ -49,7 +49,7 @@ describe('MyCounterComponent', () => {
     expect(store.dispatch).toHaveBeenCalledWith(decrementAction);
   });
 
-  it('should dispatch a Reset action when the reset button is clicked', () => {
+  it('dispatches a Reset action when the reset button is clicked', () => {
     const resetAction = new Reset();
 
     component.reset()

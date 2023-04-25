@@ -15,7 +15,7 @@ describe('HomeComponent', () => {
     component = spectator.component
   })
 
-  it('should create', () => {
+  it('creates component', () => {
     expect(component).toBeTruthy()
   })
 

@@ -20,7 +20,7 @@ describe('DataService', () => {
     httpMock.verify();
   });
 
-  it('should return todos', () => {
+  it('returns todos', () => {
     const mockResponse = [
       { id: 1, title: 'mock todo 1', completed: false },
       { id: 2, title: 'mock todo 2', completed: true },
